@@ -1,5 +1,6 @@
 package com.football.web_v1.api_football;
 
+import com.football.web_v1.api_football.dto.SearchTeamReq;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -20,9 +21,10 @@ public class ApiClient {
     @Value("${football.client.host}")
     private String apiHost;
 
-    public ResponseBody teamSearch() throws IOException {
+    public ResponseBody teamSearch(SearchTeamReq searchTeamReq) throws IOException {
+
         Request request = new Request.Builder()
-                .url("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=39")
+                .url(String.format("https://api-football-v1.p.rapidapi.com/v3/standings?season=%d&league=%d", searchTeamReq.getSeason(), searchTeamReq.getLeague()))
                 .get()
                 .addHeader("X-RapidAPI-Key", clientKey)
                 .addHeader("X-RapidAPI-Host", apiHost)

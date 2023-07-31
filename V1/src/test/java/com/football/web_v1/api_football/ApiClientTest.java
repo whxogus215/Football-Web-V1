@@ -21,7 +21,7 @@ class ApiClientTest {
 
     @Test
     public void teamSearchTest() throws IOException, JSONException {
-        ResponseBody responseBody = apiClient.teamSearch();
+        ResponseBody responseBody = apiClient.teamSearch(null);
         String result = responseBody.string();
 
         JSONObject resultJson = new JSONObject(result);

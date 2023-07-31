@@ -31,6 +31,9 @@ dependencies {
     // OKHttp 라이브러리
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
+    // JSON 라이브러리
+    implementation group: 'org.json', name: 'json', version: '20230618'
+
 }
 
 tasks.named('test') {

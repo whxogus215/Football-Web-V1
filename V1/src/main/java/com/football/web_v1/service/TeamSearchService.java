@@ -1,5 +1,6 @@
 package com.football.web_v1.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.football.web_v1.api_football.ApiClient;
 import com.football.web_v1.api_football.dto.SearchTeamReq;
 import com.football.web_v1.api_football.dto.SearchTeamRes;
@@ -40,21 +41,13 @@ public class TeamSearchService {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             SearchTeamRes searchTeamRes = new SearchTeamRes();
-            // JSON "rank"
 
+            // JSON "rank"
             searchTeamRes.setRank(jsonObject.getInt("rank"));
             // JSON "all"
-            searchTeamRes.setLose(jsonObject.getJSONObject("all").getInt("lose"));
-            searchTeamRes.setDraw(jsonObject.getJSONObject("all").getInt("draw"));
-            searchTeamRes.setPlayed(jsonObject.getJSONObject("all").getInt("played"));
-            searchTeamRes.setWin(jsonObject.getJSONObject("all").getInt("win"));
-            searchTeamRes.setGoalsAgainst(jsonObject.getJSONObject("all").getJSONObject("goals").getInt("against"));
-            searchTeamRes.setGoalsFor(jsonObject.getJSONObject("all").getJSONObject("goals").getInt("for"));
-
+            searchTeamRes.setAllStats(jsonObject.getJSONObject("all").toMap());
             // JSON "team"
-            searchTeamRes.setName(jsonObject.getJSONObject("team").getString("name"));
-            searchTeamRes.setLogo(jsonObject.getJSONObject("team").getString("logo"));
-
+            searchTeamRes.setTeamInfo(jsonObject.getJSONObject("team").toMap());
             // JSON "goalsDiff"
             searchTeamRes.setGoalsDiff(jsonObject.getInt("goalsDiff"));
             // JSON "points"

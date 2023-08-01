@@ -9,7 +9,7 @@ public enum LeagueCode {
 
     ENG(39),
     FRA(61),
-    ITA(71),
+    ITA(135),
     GER(78),
     ESP(94);
 

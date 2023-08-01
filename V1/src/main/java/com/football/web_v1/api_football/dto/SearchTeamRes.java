@@ -3,21 +3,17 @@ package com.football.web_v1.api_football.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Map;
+
 @Getter
 @Setter
 public class SearchTeamRes {
 
     private Integer rank;
 
-    private Integer win;
-    private Integer draw;
-    private Integer lose;
-    private Integer played;
-    private Integer goalsAgainst;
-    private Integer goalsFor;
+    private Map<String, Object> allStats;
 
-    private String name;
-    private String logo;
+    private Map<String, Object> teamInfo;
 
     private Integer goalsDiff;
 

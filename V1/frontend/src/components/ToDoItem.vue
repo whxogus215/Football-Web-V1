@@ -6,17 +6,16 @@
 </template>
 
 <script>
-import uniqueId from "lodash.uniqueid";
 
 export default {
   name: "ToDoItem",
   props: {
     label: { required : true, type : String},
-    done: { default : false, type : Boolean}
+    done: { default : false, type : Boolean},
+    id: { required: true, type: String},
   },
   data() { // Vue JS에서 사용되는 데이터 보관함 (Object 자료형)
     return {
-      id: 'todo-' + uniqueId(),
       isDone : this.done,
     }
   }

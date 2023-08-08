@@ -4,6 +4,7 @@
       <label class="edit-label">Edit Name for &quot;{{label}}&quot;</label>
       <input
           :id="id"
+          ref="labelInput"
           type="text"
           autocomplete="off"
           v-model.lazy.trim="newLabel" />
@@ -47,6 +48,10 @@ export default {
       this.$emit("edit-cancelled");
     },
   },
+  mounted() { // ToDoItemEditForm 컴포넌트가 VDOM에 추가되었을 때(mounted) 동작하는 메서드
+    const labelInputRef = this.$refs.labelInput;
+    labelInputRef.focus(); // Edit 버튼을 상위 컴포넌트에서 누름으로써 EditForm이 생성되었을 때, 해당 Ref에 Focus
+  }
 };
 </script>
 <style scoped>
